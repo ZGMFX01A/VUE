@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript" src="vue.js"></script>
+    </head>
+    <body>
+        <div id="root">
+            <h1>{{name}}</h1>
+            <input type="text" placeholder="ENTER" @keyup.enter="showInfo"></input>
+        </div>
+    </body>
+    <script type="text/javascript">
+        new Vue({
+            el:'#root',
+            data:{
+                name:"xx"
+            },
+            methods:{
+                showInfo(e){
+                    
+                    console.log(e.target.value)
+                }
+            }
+        })
+    </script>
+</html>

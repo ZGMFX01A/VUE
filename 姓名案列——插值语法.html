@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript" src="vue.js"></script>
+    </head>
+    <body>
+        <div id="root">
+            姓：<input type="text" v-model="firstName"></input><br>
+            名：<input type="text" v-model="lastName"></input><br>
+            姓名：<span>{{firstName}}-{{lastName}}</span>
+        </div>
+    </body>
+
+    <script type="text/javascript">
+            new Vue({
+                el:'#root',
+                data:{
+                    firstName:"张",
+                    lastName:"三"
+                }
+            })
+    </script>
+</html>

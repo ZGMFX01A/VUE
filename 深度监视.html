@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script type="text/javascript" src="vue.js"></script>
+  </head>
+  <body>
+    <div id="root">
+      <h1>天气{{info}}</h1>
+      <br />
+      <button @click="changeWeather">切换天气</button>
+      <hr>
+    <h2>值：{{number.a}}</h2></hr>
+    <button @click="number.a++">自增</button>
+    <h2>值：{{number.b}}</h2></hr>
+    <button @click="number.b++">自增</button>
+    </div>
+  </body>
+  <script type="text/javascript">
+    new Vue({
+      el: "#root",
+      data: {
+        isHot: true,
+        number:{
+            a:1,
+            b:2
+        }
+      },
+      computed: {
+        info() {
+          return this.isHot ? "炎热" : "凉爽";
+        },
+      },
+      methods:{
+          changeWeather(){
+              this.isHot=!this.isHot
+          }
+      },
+      watch:{
+          isHot:{
+              handler(newValue,oldValue){
+                  console.log('ishot',newValue,oldValue)
+              }
+          },
+          number:{
+              deep:true,
+              handler(){
+                  console.log('number变化了')
+              }
+          }
+      },
+    });
+  </script>
+</html>

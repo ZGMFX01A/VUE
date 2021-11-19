@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript" src="vue.js"></script>
+    </head>
+    <body>
+        <div id="root"> 姓：<input type="text" v-model="firstName"></input><br>
+            名：<input type="text" v-model="lastName"></input><br>
+            姓名：<span>{{fullName}}</span>
+        </div>
+    </body>
+
+    <script type="text/javascript">
+        const vm=   new Vue({
+                el:'#root',
+                data:{
+                    firstName:"张",
+                    lastName:"三"
+                },
+                computed:{
+                    fullName:{
+                        get(){
+                            console.log('调用了get')
+                            return this.firstName+"-"+this.lastName
+                        },
+                        set(value){
+                            console.log('调用了set'+value)
+                            const arr=value.split('-')
+                            this.firstName=arr[0]
+                            this.lastName=arr[1]
+                        }
+                    }
+                }
+            })
+    </script>
+</html>

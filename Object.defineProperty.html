@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+        </title>
+        <script src="vue.js"></script>
+    </head>
+    <body>
+        <script type="text/javascript">
+            let number=19
+            let person={
+                name:'jack',
+                sex:'man',
+            
+            }
+            Object.defineProperty(person,'age',{
+               
+                // enumerable:true,//属性是否可枚举
+                // writable:true,//属性是否可被修改
+                // configurable:true,//属性是否可以被删除
+                get:function(){
+                    return number
+                }
+            })
+            // console.log(Object.keys(person))
+            // console.log(person)
+        </script>
+    </body>
+</html>

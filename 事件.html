@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script type="text/javascript" src="vue.js"></script>
+  </head>
+  <body>
+      <div id="root">
+          <h1>xx{{name}}</h1>
+          <button v-on:click="showInfo1">1</button>
+          <button @click="showInfo2(123)">2</button>
+      </div>
+  </body>
+  <script type="text/javascript">
+      new Vue({
+          el:'#root',
+          data:{
+              name:'yy'
+          },
+          methods:{
+            showInfo1(){
+                alert('123')
+            },
+            showInfo2(number){
+                console.log(number)
+                alert('456')
+            }
+
+          }
+      })
+  </script>
+</html>
+          
