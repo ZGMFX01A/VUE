@@ -1,27 +1,35 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <script type="text/javascript" src="vue.js"></script>
-    </head>
-    <body>
-        <div id="root">
-            <ul>
-                <li v-for="p in person" :key="person.id">
-                    {{p.name}}-{{p.age}}
-                </li>     
-            </ul>
-        </div>
-    </body>
-    <script type="text/javascript">
-        new Vue({
-            el:'#root',
-            data:{
-                person:[
-                    {id:'01',name:'张三',age:10},
-                    {id:'02',name:'李四',age:18},
-                    {id:"03",name:'王五',age:20}
-            ]
-            }
-        })
-    </script>
+  <head>
+    <script type="text/javascript" src="vue.js"></script>
+  </head>
+  <body>
+    <div id="root">
+        ,<button @click.once="add">add</button>
+      <ul>
+        <li v-for="p in person" :key="person.id">{{p.name}}-{{p.age}}
+            <input type="text">
+
+        </li>
+      </ul>
+    </div>
+  </body>
+  <script type="text/javascript">
+    new Vue({
+      el: "#root",
+      data: {
+        person: [
+          { id: "01", name: "张三", age: 10 },
+          { id: "02", name: "李四", age: 18 },
+          { id: "03", name: "王五", age: 20 },
+        ],
+      },
+      methods:{
+          add(){
+              const p={id:'004',name:'xxxx',age:99}
+              this.person.unshift(p)
+          }
+      }
+    });
+  </script>
 </html>
