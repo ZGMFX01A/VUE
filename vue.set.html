@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript" src="vue.js"></script>
+    </head>
+    <body>
+        <div id="root">
+          
+            姓名：<span>{{person.name}}</span><br>
+            <span v-if="person.sex">性别：<span>{{person.sex}}</span><br></span>
+            <button @click="add">add</button>
+        </div>
+    </body>
+
+    <script type="text/javascript">
+            new Vue({
+                el:'#root',
+                data:{
+                    person:{
+                        name:'张三'
+                    }
+                },
+                methods:{
+                    add(){
+                        Vue.set(this.person,'sex','男')
+                    }
+                }
+            })
+    </script>
+</html>
