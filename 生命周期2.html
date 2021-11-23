@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript" src="vue.js"></script>
+    </head>
+    <body>
+        <div id="root">
+            <h1>当前的值是：{{n}}</h1>
+            <button @click="add">+</button>
+        </div>
+    </body>
+    <script type="text/javascript">
+        new Vue({
+            el:'#root',
+            data:{
+                n:1
+            },
+            methods:{
+                add(){
+                    this.n++
+                }
+            },
+            beforeCreate(){
+                console.log('beforeCreate')
+                // console.log(this)
+            },
+            created(){
+                console.log('created')
+            },
+            beforeMount(){
+                console.log('beforeMount')
+                // console.log(this)
+            },
+            mounted(){
+                console.log('mounted')
+            }
+
+        })
+    </script>
+</html>

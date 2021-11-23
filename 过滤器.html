@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script type="text/javascript" src="vue.js"></script>
+    <script type="text/javascript" src="dayjs.min.js"></script>
+  </head>
+  <body>
+    <div id="root">
+      <h1>显示时间</h1>
+      <h2>{{fmtTime}}</h2>
+      <h3>{{getTime()}}</h3>
+      <h4>{{time | timeFmt|xx}}</h4>
+      <h5 :x="info | xx">123</h5>
+    </div>
+  </body>
+  <script type="text/javascript">
+      //全局过滤器
+      Vue.filter('xx',function(value){
+          return value.slice(0,4)
+      }),
+    new Vue({
+      el: "#root",
+      data: {
+        time: 1637631826654,
+        info:'123456778888',
+      },
+      computed: {
+        fmtTime() {
+          return dayjs(this.time).format("YYYY-MM-DD HH:mm:ss");
+        },
+      },
+      methods: {
+        getTime() {
+          return dayjs(this.time).format("YYYY-MM-DD HH:mm:ss");
+        },
+      },
+      //部分过滤器
+      filters:{
+            timeFmt(value){
+                return dayjs(value).format("YYYY-MM-DD HH:mm:ss");
+            },
+            
+        }
+    });
+  </script>
+</html>
