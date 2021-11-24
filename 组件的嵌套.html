@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head><script type="text/javascript" src="vue.js"></script></head>
+    <body>
+        <div id="root">
+           <!-- <app></app> -->
+            
+        </div>
+    </body>
+    <script type="text/javascript">
+        const student=Vue.extend({
+            template:`<div>
+                <hr><h1>{{name}}</h1>
+                <h2>{{age}}</h2></div>`,
+            data(){
+                return{
+                    name:'aa',
+                    age:20
+                }
+            }
+        })
+        const school=Vue.extend({
+            template:`<div>
+                <h1>{{name}}</h1>
+                <h2>{{address}}</h2>
+                <student></student>
+                </div>`,
+            data(){
+                return{
+                        name:'xx',
+                        address:'abc'
+                }
+            },
+            components:{
+                student
+            }
+        })
+        const string=Vue.extend({
+            template:`<div><h1>{{name}}</h1></div>`,
+            data(){
+                return{
+                    name:'!!!!!!'
+                }
+            }
+        })
+        const app=Vue.extend({
+            template:`<div>
+                <string></string>
+                <school></school></div>`,
+            components:{
+                school,
+                string
+            }
+        })
+
+        new Vue({
+            template:`<app></app>`,
+            el:'#root',
+            components:{
+                app
+            }
+        })
+    </script>
+</html>

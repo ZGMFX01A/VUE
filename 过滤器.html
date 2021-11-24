@@ -15,7 +15,7 @@
   </body>
   <script type="text/javascript">
       //全局过滤器
-      Vue.filter('xx',function(value){
+      Vue.filter('xx',function(value){·1
           return value.slice(0,4)
       }),
     new Vue({
@@ -38,8 +38,7 @@
       filters:{
             timeFmt(value){
                 return dayjs(value).format("YYYY-MM-DD HH:mm:ss");
-            },
-            
+            },           
         }
     });
   </script>

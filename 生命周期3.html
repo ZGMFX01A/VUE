@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript" src="vue.js"></script>
+    </head>
+    <body>
+        <div id="root">
+            <h1 :style="{opacity}">VUE</h1>
+            <button @click="opacity=1">1</button>
+            <button @click="stop">X</button>
+        </div>
+    </body>
+    <script type="text/javascript">
+        new Vue({
+            el:'#root',
+            data:{
+                opacity:1
+            },
+            methods:{
+                stop(){
+                    //clearInterval(this.time)
+                    this.$destroy()
+                }
+            },
+            mounted(){
+              this.time= setInterval(()=>{
+                    this.opacity-=0.01
+                    if(this.opacity<=0)this.opacity=1
+                },16)
+            },
+            beforeDestroy(){
+                clearInterval(this.time)
+            }
+        })
+    </script>
+</html>

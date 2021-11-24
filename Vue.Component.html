@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script type="text/javascript" src="vue.js"></script>
+  </head>
+  <body>
+    <div id="root">
+      <school></school>
+    </div>
+    
+  </body>
+  <script type="text/javascript">
+    
+    const school = Vue.extend({
+      template: `<div>
+            <h1>{{Scname}}</h1>
+            <h2>{{address}}</h2>
+            <button @click="showname">按钮</button></div>`,
+      data() {
+        return {
+          Scname: "xx",
+          address: "yy",
+        };
+      },
+      methods: {
+        showname() {
+            console.log(this)
+          alert(this.Scname);
+        },
+      },
+    })
+    
+    new Vue({
+      el: "#root",
+      components: {
+        school,
+ 
+      },
+    });
+    
+  </script>
+</html>
+

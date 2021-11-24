@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script type="text/javascript" src="vue.js"></script>
+  </head>
+  <body>
+    <div id="root">
+      <school></school>
+      <hr />
+      <student></student>
+      <aa></aa>
+    </div>
+    
+  </body>
+  <script type="text/javascript">
+    
+    const school = Vue.extend({
+      template: `<div>
+            <h1>{{Scname}}</h1>
+            <h2>{{address}}</h2>
+            <button @click="showname">按钮</button></div>`,
+      data() {
+        return {
+          Scname: "xx",
+          address: "yy",
+        };
+      },
+      methods: {
+        showname() {
+          alert(this.Scname);
+        },
+      },
+    })
+    const student = Vue.extend({
+      template: `<div>
+                <h1>{{Stname}}</h1>
+                <h2>{{age}}</h2></div>`,
+      data() {
+        return {
+          Stname: "11",
+          age: 18,
+        };
+      },
+    })
+    const aa=Vue.extend({
+        template:`<div><h1>!!!!!!!!</h1></div>`,
+    })
+    Vue.component('aa',aa)
+    new Vue({
+      el: "#root",
+      components: {
+        school,
+        student,
+      },
+    });
+    
+  </script>
+</html>
