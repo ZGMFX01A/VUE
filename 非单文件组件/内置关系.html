@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head><script type="text/javascript" src="vue.js"></script></head>
+    <body>
+        <div id="root">
+            <x></x>
+        </div>
+    </body>
+    <script type="text/javascript">
+        Vue.prototype.x=99
+        const x=Vue.extend({
+            template:`<div><h1>{{name}}</h1>
+                <button @click="show">xxx</button>        
+                </div>`,
+                data(){
+                    return{
+                        name:'xxx'
+                    }
+                },
+                methods:{
+                    show(){
+                        console.log(this.x)
+                    }
+                }
+
+        })
+        new Vue({
+            el:'#root',
+            components:{
+                x
+            }
+        })
+        console.log(x.prototype.__proto__===Vue.prototype)
+
+        // function Demo(){
+        //     this.a=1
+        //     this.b=2
+        // }
+        // const d =new Demo()
+
+        // console.log(Demo.prototype)//显示原型属性
+
+        // console.log(d.__proto__)//隐式原型属性
+
+        // console.log(Demo.prototype===d.__proto__)
+
+        // Demo.prototype.x=99
+
+        // console.log(d)
+    </script>
+</html>
