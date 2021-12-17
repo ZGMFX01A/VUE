@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> </title>
+</head>
+<body>
+<button onclick="save()">+</button>
+<button onclick="read()">load</button>
+<button onclick="remove()">-</button>
+<button onclick="removeAll()">---</button>
+<script type="text/javascript">
+    let p={name:'xxx',age:22}
+    function save(){
+        localStorage.setItem('xx','123')
+        localStorage.setItem('person',JSON.stringify(p))
+    }
+    function  read(){
+        console.log(localStorage.getItem('xx'))
+        console.log(JSON.parse(localStorage.getItem('person')))
+    }
+    function remove(){
+        localStorage.removeItem('xx')
+    }
+    function removeAll(){
+        localStorage.clear()
+    }
+</script>
+</body>
+</html>

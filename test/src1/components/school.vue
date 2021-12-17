@@ -1,21 +1,22 @@
 <template>
   <div class="demo">
     <h1>{{ name }}</h1>
-    <h2>{{ age }}</h2>
-     <h2>{{ age2 }}</h2>
-    <button @click="show">xxxx</button>
+    <h2>{{ address }}</h2>
   </div>
 </template>
 <script>
-import mixin from '@/mixin'
 export default {
   data() {
     return {
       name: "xx",
-      age: "18",
+      address: "123",
     };
   },
-  mixins:[mixin]
 };
 </script>
-
+<style scoped>
+.demo {
+  background-color: darkcyan;
+  padding: 5px;
+}
+</style>

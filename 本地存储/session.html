@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button onclick="save()">+</button>
+<button onclick="read()">load</button>
+<button onclick="remove()">-</button>
+<button onclick="removeAll()">---</button>
+<script type="text/javascript">
+    let p={name:'xxx',age:22}
+    function save(){
+        sessionStorage.setItem('xx','123')
+        sessionStorage.setItem('person',JSON.stringify(p))
+    }
+    function  read(){
+        console.log(sessionStorage.getItem('xx'))
+        console.log(JSON.parse(sessionStorage.getItem('person')))
+    }
+    function remove(){
+        sessionStorage.removeItem('xx')
+    }
+    function removeAll(){
+        sessionStorage.clear()
+    }
+</script>
+</body>
+</html>

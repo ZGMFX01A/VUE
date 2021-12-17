@@ -3,7 +3,7 @@
     <div class="todo-container">
       <div class="todo-wrap">
         <Top @addTodo="addTodo"/>
-        <List :checkItem="checkItem" :deleteTodo="deleteTodo" :todos="todos"/>
+        <List :todos="todos"/>
         <Bottom :todos="todos" @checkAllItem="checkAllItem" @clearAllItem="clearAllItem"/>
       </div>
     </div>
@@ -14,6 +14,7 @@
 import Top from "@/components/Top";
 import List from "@/components/List";
 import Bottom from "@/components/Bottom";
+import pubsub from 'pubsub-js'
 
 export default {
   name: 'App',
@@ -36,7 +37,7 @@ export default {
         if (todo.id === id) todo.finish = !todo.finish
       });
     },
-    deleteTodo(id) {
+    deleteTodo(_, id) {
       this.todos = this.todos.filter((todo) => {
         return todo.id !== id
       })
@@ -50,6 +51,11 @@ export default {
       this.todos = this.todos.filter((item) => {
         return !item.finish
       })
+    },
+    updateItem(id, title) {
+      this.todos.forEach((item) => {
+        if (item.id === id) item.title = title
+      })
     }
   },
   watch: {
@@ -59,6 +65,16 @@ export default {
         localStorage.setItem('todos', JSON.stringify(value))
       }
     }
+  },
+  mounted() {
+    this.$bus.$on('checkItem', this.checkItem)
+    this.$bus.$on('updateItem', this.updateItem)
+    this.pudId = pubsub.subscribe('deleteTodo', this.deleteTodo)
+  },
+  beforeDestroy() {
+    this.$bus.$off('checkItem')
+    this.$bus.$off('updateItem')
+    pubsub.unsubscribe(this.pudId)
   }
 }
 </script>
@@ -91,6 +107,13 @@ body {
 .btn-danger:hover {
   color: #fff;
   background-color: #bd362f;
+}
+
+.btn-edit {
+  color: #f9f9f9;
+  background-color: #5bc0de;
+  border: 1px solid aquamarine;
+  margin-right: 5px;
 }
 
 .btn:focus {
