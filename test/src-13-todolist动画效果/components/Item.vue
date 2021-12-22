@@ -1,17 +1,17 @@
 <template>
-  <li>
-    <label>
-      <input :checked="item.finish"
-             type="checkbox"
-             @change="handleCheck(item.id)"/>
-      <span v-show="!item.isEdit">{{ item.title }}</span>
-      <input v-show="item.isEdit" ref="inputEdit" :value="item.title" type="text" @blur="handleBlur(item,$event)">
-    </label>
-    <button class="btn btn-danger"
-            @click="deleteItem(item.id)">删除
-    </button>
-    <button v-show="!item.isEdit" class="btn btn-edit" @click="handleEdit(item)">编辑</button>
-  </li>
+    <li>
+      <label>
+        <input :checked="item.finish"
+               type="checkbox"
+               @change="handleCheck(item.id)"/>
+        <span v-show="!item.isEdit">{{ item.title }}</span>
+        <input v-show="item.isEdit" ref="inputEdit" :value="item.title" type="text" @blur="handleBlur(item,$event)">
+      </label>
+      <button class="btn btn-danger"
+              @click="deleteItem(item.id)">删除
+      </button>
+      <button v-show="!item.isEdit" class="btn btn-edit" @click="handleEdit(item)">编辑</button>
+    </li>
 </template>
 
 <script>
@@ -95,4 +95,6 @@ li:hover {
 li:hover button {
   display: block;
 }
+
+
 </style>
